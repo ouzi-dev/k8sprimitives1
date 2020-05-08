@@ -1,4 +1,34 @@
-# k8s primitives 1 workshop
+# k8s primitives 1 workshop <!-- omit in toc -->
+
+- [Goals](#goals)
+- [Pre-reqs](#pre-reqs)
+- [Overview](#overview)
+- [Steps](#steps)
+  - [01 - Run nginx in docker serving local files](#01---run-nginx-in-docker-serving-local-files)
+  - [02 - Run a git sync tool in docker cloning this repo](#02---run-a-git-sync-tool-in-docker-cloning-this-repo)
+  - [03 - Run both containers above in a k8s pod](#03---run-both-containers-above-in-a-k8s-pod)
+  - [04 - Run a fixed number of replicas for each of our pods, called deployment](#04---run-a-fixed-number-of-replicas-for-each-of-our-pods-called-deployment)
+  - [05 - Create a service for each deployment that allows us to do service discovery across any number of pods running](#05---create-a-service-for-each-deployment-that-allows-us-to-do-service-discovery-across-any-number-of-pods-running)
+  - [06 - Create an ingress object that makes those pods available to the external world](#06---create-an-ingress-object-that-makes-those-pods-available-to-the-external-world)
+
+## Goals
+
+This workshop will help you understand how the basic kubernetes primitives work.
+
+You will understand how:
+- pods work
+  - multiple containers
+  - volume sharing
+  - network sharing
+  - resource constraints
+- deployments work with a pod that has:
+  - 2 containers
+  - exposed ports
+  - volume sharing
+  - resource contraints
+- services work with different label selectors
+- ingresses work with path based routing, SSL certificates and custom nginx configuration 
+  
 
 ## Pre-reqs 
 
@@ -50,7 +80,7 @@ kubectl apply -f 03-pod/
 
 > So now we can put both containers in a pod and leverage the pod semantics across shared network and volume. What happens if the pod dies though ? How can i maintain a number of pods always ?
 
-### 04 - Run a fixed number of replics for each of our pods, called deployment
+### 04 - Run a fixed number of replicas for each of our pods, called deployment
 
 In this step we will create two deployment objects. One for cats and one for dogs. They will each have a fixed number of replicas such that we can ensure a fixed capacity irrespective of individual pods are dying.
 
