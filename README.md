@@ -27,7 +27,7 @@ You will understand how:
   - volume sharing
   - resource contraints
 - services work with different label selectors
-- ingresses work path based routing works
+- ingresses work with path based routing, SSL certificates and custom nginx configuration 
   
 
 ## Pre-reqs 
