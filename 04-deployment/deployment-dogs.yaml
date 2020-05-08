@@ -50,7 +50,7 @@ spec:
           imagePullPolicy: IfNotPresent
           env:
             - name: GIT_SYNC_REPO
-              value: 'https://github.com/ouzi-dev/solarstorm'
+              value: 'https://github.com/ouzi-dev/k8sprimitives1'
             - name: GIT_SYNC_BRANCH
               value: master
             - name: GIT_SYNC_WAIT
