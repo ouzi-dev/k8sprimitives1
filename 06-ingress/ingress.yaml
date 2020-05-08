@@ -4,26 +4,26 @@ metadata:
   name: kitten-ingress
   namespace: k8sprimitives1
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    # cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
   - host: k8sprimitives1.k8sdemos.test-infra.ouzi.io
     http:
       paths:
-      - path: /kittens
+      - path: /kittens(/|$)(.*)
         backend:
           serviceName: kittens
           servicePort: http
-      - path: /dogs
+      - path: /dogs(/|$)(.*)
         backend:
           serviceName: dogs
           servicePort: http
-      - path: /
+      - path: /random(/|$)(.*)
         backend:
           serviceName: all
           servicePort: http
-  # tls:
-  # - hosts:
-  #   - k8sprimitives1.k8sdemos.test-infra.ouzi.io
-  #   secretName: k8sprimitives1-cert
+  tls:
+  - hosts:
+    - k8sprimitives1.k8sdemos.test-infra.ouzi.io
+    secretName: k8sprimitives1-cert
